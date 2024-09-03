@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ricette Casuali</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        header {
+            background-color: #343a40;
+            color: white;
+            padding: 20px 0;
+        }
+        main {
+            padding: 20px;
+        }
+        #recipe-container {
+            margin: 20px auto;
+            max-width: 600px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        footer {
+            margin-top: 20px;
+            padding: 10px 0;
+            background-color: #343a40;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ricette Casuali</h1>
+    </header>
+
+    <main>
+        <section id="recipe-container">
+            <h2 id="recipe-title">Titolo Ricetta</h2>
+            <img id="recipe-image" src="placeholder.jpg" alt="Immagine Ricetta">
+            <h3>Ingredienti:</h3>
+            <ul id="recipe-ingredients">
+                <li>Ingrediente 1</li>
+                <li>Ingrediente 2</li>
+            </ul>
+            <h3>Procedura:</h3>
+            <p id="recipe-instructions">Istruzioni per preparare la ricetta...</p>
+        </section>
+        <button onclick="fetchRandomRecipe()">Nuova Ricetta</button>
+    </main>
+
+    <footer>
+        <p>Contatti | Social Media | Crediti</p>
+    </footer>
+
+    <script>
+        const recipes = [
+            {
+                title: "Pasta alla Carbonara",
+                image: "https://via.placeholder.com/600x400.png?text=Pasta+alla+Carbonara",
+                ingredients: ["200g pasta", "100g guanciale", "2 uova", "Pecorino", "Pepe nero"],
+                instructions: "Cuoci la pasta. Prepara il guanciale in padella..."
+            },
+            {
+                title: "Insalata di Quinoa",
+                image: "https://via.placeholder.com/600x400.png?text=Insalata+di+Quinoa",
+                ingredients: ["100g quinoa", "Pomodori", "Cetrioli", "Olive", "Feta"],
+                instructions: "Cuoci la quinoa. Mescola con verdure fresche..."
+            }
+        ];
+
+        function fetchRandomRecipe() {
+            const randomIndex = Math.floor(Math.random() * recipes.length);
+            const recipe = recipes[randomIndex];
+
+            document.getElementById('recipe-title').innerText = recipe.title;
+            document.getElementById('recipe-image').src = recipe.image;
+            document.getElementById('recipe-ingredients').innerHTML = recipe.ingredients.map(ing => `<li>${ing}</li>`).join("");
+            document.getElementById('recipe-instructions').innerText = recipe.instructions;
+        }
+    </script>
+</body>
+</html>
